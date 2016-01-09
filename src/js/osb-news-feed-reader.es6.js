@@ -5,7 +5,7 @@
         <style>
             @import url('https://fonts.googleapis.com/css?family=Roboto:400,300');
             @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
-            @import '/src/css/css/osb-news-feed-reader.css';
+            @import '/src/css/osb-news-feed-reader.css';
         </style>
         <main class="osb-news-feed-reader-holder">
             <h2>News <i class="fa fa-newspaper-o"></i></h2>
