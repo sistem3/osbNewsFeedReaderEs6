@@ -15,6 +15,9 @@
         createdCallback() {
             this.createShadowRoot().innerHTML = template;
             var newsFeed = 'http://feeds.bbci.co.uk/news/rss.xml?edition=uk';
+            this.$holder = this.shadowRoot.querySelector('.osb-news-feed-reader-holder');
+            this.$feedHolder = this.shadowRoot.querySelector('.feed-list');
+
             this.getNewsFeed(newsFeed);
         };
 
@@ -23,12 +26,17 @@
 
         attributeChangedCallback(attrName, oldVal, newVal) {
             if (attrName === 'feed') {
-                console.log(newVal);
+                var feedData = JSON.parse(newVal);
+                this.renderTemplate(feedData);
             }
         };
 
         renderTemplate(feed) {
-
+            var templateHolder = this.$feedHolder;
+            feed.entries.forEach(function(element, index, array) {
+                console.log(element);
+                templateHolder.innerHTML += '<li>' + element.title + '</li>';
+            });
         };
 
         getNewsFeed(feed) {
@@ -38,8 +46,7 @@
                 .then(function(response) {
                     return response.json();
                 }).then(function(json) {
-                    console.log(json.responseData.feed);
-                    var feed = JSON.stringify(json);
+                    var feed = JSON.stringify(json.responseData.feed);
                     return holder.setAttribute('feed', feed);
                 }).catch(function(ex) {
                     console.log('parsing failed', ex);
