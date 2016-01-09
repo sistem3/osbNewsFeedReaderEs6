@@ -9,13 +9,13 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'css/osb-news-feed-reader.css': 'scss/osb-news-feed-reader.scss'
+                    'src/css/osb-news-feed-reader.css': 'src/scss/osb-news-feed-reader.scss'
                 }
             }
         },
         watch: {
             scripts: {
-                files: ['scss/**/*.scss'],
+                files: ['src/scss/**/*.scss'],
                 tasks: ['sass'],
                 options: {
                     spawn: false
