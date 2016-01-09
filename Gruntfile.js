@@ -9,7 +9,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'css/osb-geo-weather.css': 'scss/osb-geo-weather.scss'
+                    'css/osb-news-feed-reader.css': 'scss/osb-news-feed-reader.scss'
                 }
             }
         },
