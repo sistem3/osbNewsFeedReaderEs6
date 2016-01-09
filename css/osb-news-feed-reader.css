@@ -14,7 +14,7 @@
 .osb-news-feed-reader-holder .defaultBg {
   background: #CCC; }
 
-.osb-news-feed-reader-holder h1, .osb-news-feed-reader-holder h2, .osb-news-feed-reader-holder h3, .osb-news-feed-reader-holder h4, .osb-news-feed-reader-holder h5, .osb-news-feed-reader-holder p, .osb-news-feed-reader-holder span {
+.osb-news-feed-reader-holder h1, .osb-news-feed-reader-holder h2, .osb-news-feed-reader-holder h3, .osb-news-feed-reader-holder h4, .osb-news-feed-reader-holder h5, .osb-news-feed-reader-holder p, .osb-news-feed-reader-holder span, .osb-news-feed-reader-holder small {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   color: #000; }
@@ -36,7 +36,7 @@
   padding: 0;
   margin: 0; }
   .osb-news-feed-reader-holder .feed-list li {
-    width: 25%;
+    width: 33.3333%;
     display: inline-block; }
 
 /*# sourceMappingURL=osb-news-feed-reader.css.map */

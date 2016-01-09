@@ -9,6 +9,7 @@
         </style>
         <main class="osb-news-feed-reader-holder">
             <h2>News <i class="fa fa-newspaper-o"></i></h2>
+            <h3 class="feed-title">Powered by: <span></span></h3>
             <ul class="feed-list"></ul>
         </main>`;
     class osbNewsFeedReader extends HTMLElement {
@@ -17,6 +18,7 @@
             var newsFeed = 'http://feeds.bbci.co.uk/news/rss.xml?edition=uk';
             this.$holder = this.shadowRoot.querySelector('.osb-news-feed-reader-holder');
             this.$feedHolder = this.shadowRoot.querySelector('.feed-list');
+            this.$feedTitle = this.shadowRoot.querySelector('.feed-title');
 
             this.getNewsFeed(newsFeed);
         };
@@ -33,8 +35,13 @@
 
         renderTemplate(feed) {
             var templateHolder = this.$feedHolder;
+            this.$feedTitle.querySelector('span').innerHTML = feed.title;
             feed.entries.forEach(function(element, index, array) {
-                templateHolder.innerHTML += '<li><h3>' + element.title + '</h3></li>';
+                templateHolder.innerHTML +=
+                    '<li><h3>' + element.title + '</h3>' +
+                    '<p>' + element.content + '</p>' +
+                    '<small>' + element.publishedDate.slice(0, 17) + '</small>' +
+                    '</li>';
             });
         };
 
