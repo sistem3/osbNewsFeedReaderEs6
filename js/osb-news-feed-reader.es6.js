@@ -34,8 +34,7 @@
         renderTemplate(feed) {
             var templateHolder = this.$feedHolder;
             feed.entries.forEach(function(element, index, array) {
-                console.log(element);
-                templateHolder.innerHTML += '<li>' + element.title + '</li>';
+                templateHolder.innerHTML += '<li><h3>' + element.title + '</h3></li>';
             });
         };
 
@@ -46,6 +45,7 @@
                 .then(function(response) {
                     return response.json();
                 }).then(function(json) {
+                    console.log(json.responseData.feed);
                     var feed = JSON.stringify(json.responseData.feed);
                     return holder.setAttribute('feed', feed);
                 }).catch(function(ex) {
