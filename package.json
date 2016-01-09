@@ -2,6 +2,7 @@
   "name": "osb-news-feed",
   "version": "0.0.1",
   "dependencies": {
+    "fetch-jsonp": "^1.0.0",
     "grunt-cli": "^0.1.13",
     "webcomponents.js": "^0.7.20"
   },

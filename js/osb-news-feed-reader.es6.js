@@ -7,28 +7,42 @@
             @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
             @import '/css/osb-news-feed-reader.css';
         </style>
-        <main>
+        <main class="osb-news-feed-reader-holder">
             <h2>News <i class="fa fa-newspaper-o"></i></h2>
             <ul class="feed-list"></ul>
         </main>`;
     class osbNewsFeedReader extends HTMLElement {
         createdCallback() {
             this.createShadowRoot().innerHTML = template;
-            this.getNewsFeed();
+            var newsFeed = 'http://feeds.bbci.co.uk/news/rss.xml?edition=uk';
+            this.getNewsFeed(newsFeed);
         };
 
         attachedCallback() {
         };
 
         attributeChangedCallback(attrName, oldVal, newVal) {
+            if (attrName === 'feed') {
+                console.log(newVal);
+            }
+        };
+
+        renderTemplate(feed) {
 
         };
 
         getNewsFeed(feed) {
             console.log(feed);
-            fetch('//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSON_CALLBACK&q=')
-                .then(function() {
-
+            var holder = this;
+            fetchJsonp('//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&q=' + feed)
+                .then(function(response) {
+                    return response.json();
+                }).then(function(json) {
+                    console.log(json.responseData.feed);
+                    var feed = JSON.stringify(json);
+                    return holder.setAttribute('feed', feed);
+                }).catch(function(ex) {
+                    console.log('parsing failed', ex);
                 });
         };
 
