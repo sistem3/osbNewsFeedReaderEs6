@@ -17,8 +17,10 @@
             this.createShadowRoot().innerHTML = template;
             var newsFeed = 'http://feeds.bbci.co.uk/news/rss.xml?edition=uk';
             this.$holder = this.shadowRoot.querySelector('.osb-news-feed-reader-holder');
+            this.googleFeedBaseUrl = '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&q=';
             this.$feedHolder = this.shadowRoot.querySelector('.feed-list');
             this.$feedTitle = this.shadowRoot.querySelector('.feed-title');
+            console.log(this);
 
             this.getNewsFeed(newsFeed);
         };
@@ -48,7 +50,7 @@
         getNewsFeed(feed) {
             console.log(feed);
             var holder = this;
-            fetchJsonp('//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&q=' + feed)
+            fetchJsonp(this.googleFeedBaseUrl + feed)
                 .then(function(response) {
                     return response.json();
                 }).then(function(json) {
